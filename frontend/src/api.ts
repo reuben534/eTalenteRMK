@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { Portfolio, WithdrawalNotice } from './types';
 
 const api = axios.create({
-  baseURL: process.env.VITE_API_URL || 'http://localhost:8080/api'
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080/api'
 });
 
 export async function getPortfolio(investorId: number) {
@@ -21,7 +21,7 @@ export async function createWithdrawal(investorId: number, productId: number, am
 }
 
 export function statementUrl(investorId: number, from?: string, to?: string) {
-  const baseUrl = process.env.VITE_API_URL || 'http://localhost:8080/api';
+  const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
   const params = new URLSearchParams({ investorId: String(investorId) });
   if (from) params.set('from', from);
   if (to) params.set('to', to);
