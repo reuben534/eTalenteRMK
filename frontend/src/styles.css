@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(27, 94, 87, 0.08), rgba(246, 247, 244, 0) 320px),
+    #f6f7f4;
+}
+
+.money {
+  font-variant-numeric: tabular-nums;
+}
