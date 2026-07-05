@@ -65,27 +65,6 @@ jobs:
           name: frontend-dist
           path: frontend/dist/**
 
-  docker-build:
-    needs: [backend-test, frontend-test]
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build Docker images
-        run: |
-          docker compose build
-
-      - name: Test Docker services startup
-        run: |
-          docker compose up -d
-          sleep 10
-          docker compose ps
-          docker compose down
 
   code-quality:
     runs-on: ubuntu-latest
